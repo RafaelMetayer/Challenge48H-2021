@@ -29,13 +29,9 @@ def createProduct():
     copyright = request.form.get("copyright")
     copyright_date = request.form.get("copyright_date")
 
-
-    if 'productImage' in request.files:
-        print("test")
+    if 'productImage[]' in request.files:
         productImage = request.files.getlist('productImage[]')
-        print(productImage)
         for productImage in productImage:
-            print("test")
             mongo.save_file(productImage.filename, productImage)
             mongo.db.PassionFroid.insert({'productImage_name': productImage.filename,
                                           'titre': titre,
