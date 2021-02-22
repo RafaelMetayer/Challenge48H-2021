@@ -18,10 +18,34 @@ def newProduct():
 
 @app.route('/uploadProduct', methods=['POST'])
 def createProduct():
+    titre = request.form.get("title")
+    type = request.form.get("type")
+    humain = request.form.get("humain")
+    institutionelle = request.form.get("institutionelle")
+    format = request.form.get("format")
+    credits = request.form.get("credits")
+    droit_limite = request.form.get("droit_limite")
+    copyright = request.form.get("copyright")
+    copyright_date = request.form.get("copyright_date")
+
+
     if 'productImage' in request.files:
         productImage = request.files['productImage']
         mongo.save_file(productImage.filename, productImage)
-        mongo.db.PassionFroid.insert({'productImage_name': productImage.filename})
+        mongo.db.PassionFroid.insert({'productImage_name': productImage.filename,
+                                      'titre': titre,
+                                      'type': type,
+                                      'humain': humain,
+                                      'institutionelle': institutionelle,
+                                      'format': format,
+                                      'credit' : credits,
+                                      'droit_limite' : droit_limite,
+                                      'copyright' : copyright,
+                                      'copyright_date' : copyright_date
+                                      })
+
+
+
     return render_template('newProduct.html')
 
 

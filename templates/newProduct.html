@@ -3,11 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="styles/home.css">
 </head>
 <body>
-    <form method="POST" action="/uploadProduct" enctype="multipart/form-data">
-    <input type="file" name="productImage">
-    <input type="submit">
+    <div class="menu">
+        <input type="file" name="productImage">
+
+        <form method="POST" action="/uploadProduct" enctype="multipart/form-data"
+        <input type="file" name="productImage">
+
+        <label for="title">
+            Titre
+        </label>
+
+        <input type="text" name="title" id="title"> <br>
+
+        <label for="type">
+            Type d'image :
+        </label>
+
+         <input type="radio" id="photo_passion_froid" name="type" value="Passion froid">
+        <label for="photo_passion_froid">Passion Froid</label>
+        <input type="radio" id="photo_fournisseur" name="type" value="Fournisseur">
+        <label for="photo_fournisseur">Fournisseur</label>
+        <input type="radio" id="photo_logo" name="type" value="Logo">
+        <label for="photo_logo">Logo</label> <br>
+
+        <label for="humain">
+            Photo avec humain :
+        </label>
+
+        <input type="radio" id="humain_oui" name="humain" value="Oui">
+        <label for="humain_oui">Oui</label>
+        <input type="radio" id="humain_non" name="humain" value="Non">
+        <label for="humain_oui">Non</label> <br>
+
+        <label for="institutionelle">
+            Photo institutionelle :
+        </label>
+
+        <input type="radio" id="institutionelle_non" name="instituyionelle" value="Non">
+        <label for="institutionelle_non">Non</label>
+        <input type="radio" id="institutionelle_oui" name="instituyionelle" value="Oui">
+        <label for="institutionelle_oui">Oui</label> <br>
+
+        <label for="format">
+            Format de la photo :
+        </label>
+
+        <input type="radio" id="format_vertical" name="format" value="Vertical">
+        <label for="format_vertical">Vertical</label>
+        <input type="radio" id="format_horizontal" name="format" value="Horizontal">
+        <label for="format_horizontal">Horizontal</label> <br>
+
+        <label for="credits">
+            Crédits de la photo :
+        </label>
+        <input type="text" id="credits" name="credits"> <br>
+
+         <label for="droit_limite">
+            Droits d'utilisation limités :
+        </label>
+
+        <input type="radio" id="droit_limite_oui" name="droit_limite" value="Oui">
+        <label for="droit_limite_oui">Oui</label>
+        <input type="radio" id="droit_limite_non" name="droit_limite" value="Non">
+        <label for="droit_limite_non">Non</label> <br>
+
+        <label for="copyright">
+            Copyright :
+        </label>
+        <input type="text" id="copyright" name="copyright"> <br>
+
+        <label for="copyright_date">
+            Date de fin de droit d'utilisation :
+        </label>
+        <input type="date" id="copyright_date" name="copyright_date">
+
+
+        <br><input type="submit">
+
+    </div>
+
 </form>
 </body>
 </html>
