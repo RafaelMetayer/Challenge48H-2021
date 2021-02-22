@@ -31,19 +31,23 @@ def createProduct():
 
 
     if 'productImage' in request.files:
-        productImage = request.files['productImage']
-        mongo.save_file(productImage.filename, productImage)
-        mongo.db.PassionFroid.insert({'productImage_name': productImage.filename,
-                                      'titre': titre,
-                                      'type': type,
-                                      'humain': humain,
-                                      'institutionelle': institutionelle,
-                                      'format': format,
-                                      'credit' : credits,
-                                      'droit_limite' : droit_limite,
-                                      'copyright' : copyright,
-                                      'copyright_date' : copyright_date
-                                      })
+        print("test")
+        productImage = request.files.getlist('productImage[]')
+        print(productImage)
+        for productImage in productImage:
+            print("test")
+            mongo.save_file(productImage.filename, productImage)
+            mongo.db.PassionFroid.insert({'productImage_name': productImage.filename,
+                                          'titre': titre,
+                                          'type': type,
+                                          'humain': humain,
+                                          'institutionelle': institutionelle,
+                                          'format': format,
+                                          'credit' : credits,
+                                          'droit_limite' : droit_limite,
+                                          'copyright' : copyright,
+                                          'copyright_date' : copyright_date
+                                          })
 
 
 
