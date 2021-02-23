@@ -3,10 +3,9 @@ from flask_pymongo import PyMongo
 
 app = Flask(__name__)
 
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/PassionFroid'
+app.config['MONGO_URI'] = 'mongodb+srv://admin:Password1234@cluster0.akaqj.mongodb.net/PassionFroid?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
-
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
