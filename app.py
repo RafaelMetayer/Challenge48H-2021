@@ -11,6 +11,7 @@ mongo = PyMongo(app)
 @app.route('/')
 def index():
     products = mongo.db.PassionFroid.find()
+
     return render_template('home.html', products=products)
 
 @app.route('/newProduct')
@@ -44,9 +45,6 @@ def createProduct():
                                           'copyright' : copyright,
                                           'copyright_date' : copyright_date
                                           })
-
-
-
     return render_template('newProduct.html')
 
 
