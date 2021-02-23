@@ -77,8 +77,17 @@
         <label for="copyright_date">
             Date de fin de droit d'utilisation :
         </label>
-        <input type="date" id="copyright_date" name="copyright_date">
+        <input type="date" id="copyright_date" name="copyright_date"> <br>
 
+        <label for="tag">
+            Tags :
+        </label>
+
+
+            <ul id="liste">
+            <li><input type="text" name="tag[]"/><input type="button" value="x" onclick="suppr(this);"/></li>
+        </ul>
+        <input type="button" value="Ajouter un tag" onclick="ajout();"/>
 
         <br><input type="submit">
     </form>
@@ -87,4 +96,38 @@
 
 </form>
 </body>
+
+<script>
+var liste;
+window.onload = function(){
+    liste = document.getElementById("liste");
+}
+
+function ajout(){
+    var newL = document.createElement("li");
+    var tag = document.createElement("input");
+    tag.type = "text";
+    tag.name = "tag[]"
+    tag.id = "tag"
+    newL.appendChild(tag);
+    var bouton = document.createElement("input");
+    bouton.type = "button";
+    bouton.onclick = function(){
+        suppr(this);
+    }
+    bouton.value = "x";
+    newL.appendChild(bouton);
+
+    liste.appendChild(newL);
+}
+
+function suppr(bouton){
+    if(document.getElementsByTagName("li").length > 1){
+        liste.removeChild(bouton.parentNode);
+    }
+    else{
+        alert("Pas de suppression possible");
+    }
+}
+</script>
 </html>

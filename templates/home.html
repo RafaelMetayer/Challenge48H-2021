@@ -52,36 +52,92 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 
+
 <section class="portfolio" id="portfolio">
+
 	<div class="container-fluid">
 		<div class="row">
+            <div class="col-4">
 
-			<div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<h1 class="gallery-title">Images :</h1>
-			</div>
-
-			<div align="center">
-				<button class="filter-button" data-filter="all">All</button>
-				<button class="filter-button" data-filter="category1">Designing</button>
-				<button class="filter-button" data-filter="category2">Development</button>
-				<button class="filter-button" data-filter="category3">Graphics</button>
-			</div>
-
-			<br/>
-            <div class="card-grid">
-                {% for product in products %}
-                <div class=" card gallery_product col-sm-3 col-xs-6 filter category1">
-                    <a class="fancybox" rel="ligthbox" href="https://picsum.photos/400/250?image=122">
-                        <img class="img-responsive" alt="" src="/product_image/{{ product.productImage_name }}" />
-                        <div class='img-info'>
-                            <h4>{{ product.titre }}</h4>
-                            <p>{{ product.type}}</p>
-                        </div>
-                    </a>
+                <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="gallery-title">Images :</h1>
                 </div>
-                {% endfor %}
+
+                <div align="center">
+                    <button class="filter-button" data-filter="all">All</button>
+                    <button class="filter-button" data-filter="category1">Designing</button>
+                    <button class="filter-button" data-filter="category2">Development</button>
+                    <button class="filter-button" data-filter="category3">Graphics</button>
+                </div>
+                <form action="{{ url_for('index')}}" method="post" role="form">
+                    <input class="form-control mr-sm-2" id="recherche" name="recherche" type="search" placeholder="Rechercher" aria-label="Search">
+
+                    <div class="form-check">
+                        <label for="type">
+                            Type d'image :
+                        </label>
+                        <input type="radio" id="type_tout" name="type" value="Tout" checked>
+                        <label for="type_tout">Tout</label>
+                        <input type="radio" id="photo_passion_froid" name="type" value="Passion froid">
+                        <label for="photo_passion_froid">Passion Froid</label>
+                        <input type="radio" id="photo_fournisseur" name="type" value="Fournisseur">
+                        <label for="photo_fournisseur">Fournisseur</label>
+                        <input type="radio" id="photo_logo" name="type" value="Logo">
+                        <label for="photo_logo">Logo</label> <br>
+                    </div>
+                    <div class="form-check">
+                        <label for="humain">
+                            Photo avec humain :
+                        </label>
+                        <input type="radio" id="humain_tout" name="humain" value="Tout" checked>
+                        <label for="humain_tout">Tout</label>
+                        <input type="radio" id="humain_oui" name="humain" value="Oui">
+                        <label for="humain_oui">Oui</label>
+                        <input type="radio" id="humain_non" name="humain" value="Non">
+                        <label for="humain_oui">Non</label> <br>
+                    </div>
+                    <div class="form-check">
+                        <label for="institutionelle">
+                            Photo institutionelle :
+                        </label>
+                        <input type="radio" id="institutionelle_tout" name="institutionelle" value="Tout" checked>
+                        <label for="institutionelle_tout">Tout</label>
+                        <input type="radio" id="institutionelle_non" name="institutionelle" value="Non">
+                        <label for="institutionelle_non">Non</label>
+                        <input type="radio" id="institutionelle_oui" name="institutionelle" value="Oui">
+                        <label for="institutionelle_oui">Oui</label> <br>
+                    </div>
+                    <div class="form-check">
+                        <label for="format">
+                            Format de la photo :
+                        </label>
+                        <input type="radio" id="format_tout" name="format" value="Tout" checked>
+                        <label for="format_tout">Tout</label>
+                        <input type="radio" id="format_vertical" name="format" value="Vertical">
+                        <label for="format_vertical">Vertical</label>
+                        <input type="radio" id="format_horizontal" name="format" value="Horizontal">
+                        <label for="format_horizontal">Horizontal</label> <br>
+                    </div>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+                </form>
             </div>
-		</div>
+            <div class="col">
+                <br/>
+                <div class="card-grid">
+                    {% for product in products %}
+                    <div class=" card gallery_product col-sm-3 col-xs-6 filter category1">
+                        <a class="fancybox" rel="ligthbox" href="https://picsum.photos/400/250?image=122">
+                            <img class="img-responsive" alt="" src="/product_image/{{ product.productImage_name }}" />
+                            <div class='img-info'>
+                                <h4>{{ product.titre }}</h4>
+                                <p>{{ product.type}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
 	</div>
 </section>
 
